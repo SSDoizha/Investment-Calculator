@@ -9,7 +9,6 @@ const FormItem = (props) => {
   };
   const resetHamdler = () => {
     console.log("reset");
-    setReset("");
   };
   const inputChangeHandler = (input, value) => {
     console.log(input, value);
