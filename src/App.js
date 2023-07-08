@@ -1,10 +1,14 @@
+import React, { useState } from "react";
 import TotalInfo from "./Components/TotalTable/TotalInfo";
-import FormItem from "./Components/Userform/FormItem";
+import UserInput from "./Components/Userform/UserInput";
 import Header from "./Components/Header/Header";
 function App() {
+  const [userInput, setUserInput] = useState(0);
   const calculateHandler = (userInput) => {
-    const yearlyData = [];
-
+    setUserInput(userInput);
+  };
+  const yearlyData = [];
+  if (userInput) {
     let currentSavings = +userInput["current-savings"];
     const yearlyContribution = +userInput["yearly-contribution"];
     const expectedReturn = +userInput["expected-return"] / 100;
@@ -20,11 +24,11 @@ function App() {
         yearlyContribution: yearlyContribution,
       });
     }
-  };
+  }
   return (
     <div>
       <Header />
-      <FormItem />;
+      <UserInput onCalculate={calculateHandler} />;
       <TotalInfo />;
     </div>
   );
